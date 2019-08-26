@@ -36,3 +36,19 @@ Required property
  
  
  password : string
+ 
+ 3.Get user details
+ 
+ link: http://localhost:3000/user
+
+ method : POST
+
+Required property
+
+Headers
+
+Authorization : Bearer <token>
+ 
+ 
+ 
+ 
