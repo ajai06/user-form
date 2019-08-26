@@ -32,7 +32,7 @@ Required property
 Required property
 
 
- name : 
+ name : string
  
  
  password : string
