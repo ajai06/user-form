@@ -10,10 +10,18 @@ link: http://localhost:3000/register
 method : POST
 
 Required property
+
  name : string
+ 
+ 
  email: string
+ 
+ 
  password: string
+ 
+ 
  password2: string
+ 
  
  2.Login User
  
@@ -22,5 +30,9 @@ Required property
  method : POST
 
 Required property
- name : string
+
+
+ name : 
+ 
+ 
  password : string
