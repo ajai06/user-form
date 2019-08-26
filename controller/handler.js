@@ -2,6 +2,7 @@ const User = require('../model/userModel');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+
 exports.registerAction = (req,res)=>{
     const { name, email, password, password2 } = req.body;
 
@@ -40,7 +41,11 @@ exports.registerAction = (req,res)=>{
                     newUser.password = hash;
                     //save user
                     newUser.save()
-                    res.status(200).json({message: 'You are now registered!'});
+                    .then(item =>{
+                        let token = jwt.sign({email}, 'kat')
+                        res.status(200).json({message: 'You are now registered!', token});
+                    })
+                    
                 })
             })
         }
@@ -65,15 +70,19 @@ exports.loginAction = (req,res) =>{
             }
         
         bcrypt.compare(password,user.password,(err,isMatch) =>{
+            console.log(user.password);
+            console.log(password);
             if(err) throw err;
 
             if(isMatch){
-                res.status(200).json({message: 'Login Successfull!'})
+                let token = jwt.sign({email}, 'kat')
+                res.status(200).json({message: 'Login Successfull!', token})
             }else{
                 res.status(401).json({error: 'Password not matched'})
             }
-        })
-      })
+        })      
 
+      })
+     
     };
 }
