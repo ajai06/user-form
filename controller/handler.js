@@ -41,9 +41,7 @@ exports.registerAction = (req,res)=>{
                     newUser.password = hash;
                     //save user
                     newUser.save()
-                    .then(item =>{
-                        let token = jwt.sign({email}, 'kat')
-                        res.status(200).json({message: 'You are now registered!', token});
+                        res.status(200).json({message: 'You are now registered!'});
                     })
                     
                 })
